@@ -18,10 +18,10 @@ import { UpdateUserDto } from './dtos/update-user.dto';
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @Get('{isMarried}')
+  @Get('{/:isMarried}')
   getUsers(
-    @Query('limit', new DefaultValuePipe(10), ParseIntPipe) limit: number,
-    @Query('page', new DefaultValuePipe(1), ParseIntPipe) page: number,
+    // @Query('limit', new DefaultValuePipe(10), ParseIntPipe) limit: number,
+    // @Query('page', new DefaultValuePipe(1), ParseIntPipe) page: number,
     @Param() param: GetUserParamDto,
   ) {
     console.log(param);
