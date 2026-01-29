@@ -1,35 +1,24 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
 import {
-  IsBoolean,
   IsEmail,
   IsNotEmpty,
-  IsNumber,
-  IsOptional,
   IsString,
+  MaxLength,
   MinLength,
 } from 'class-validator';
 
 export class CreateUserDto {
-  @IsNumber()
-  id: number;
-
-  @IsString({ message: 'Name should be a string value.' })
-  @IsNotEmpty()
-  @MinLength(3, {
-    message: 'Name should have a minimum length of 3 characters.',
-  })
-  name: string;
-
   @IsEmail()
+  @IsNotEmpty()
+  @MaxLength(100)
   email: string;
 
-  @IsNumber()
-  age: number;
+  @IsNotEmpty()
+  @MaxLength(24)
+  username: string;
 
   @IsString()
-  @IsOptional()
-  gender?: string;
-
-  @IsBoolean()
-  isMarried: boolean;
+  @IsNotEmpty()
+  @MinLength(8)
+  @MaxLength(100)
+  password: string;
 }

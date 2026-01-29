@@ -11,17 +11,5 @@ export class TweetService {
     { text: 'I love programming', userId: 1, date: new Date() },
   ];
 
-  getTweets(userId: number) {
-    const user = this.userService.getUserById(userId);
-    if (!user) {
-      throw new Error('User not found');
-    }
-    const tweetsByUser = this.tweets
-      .filter((tweet) => tweet.userId === userId)
-      .map((tweet) => ({
-        ...tweet,
-        user,
-      }));
-    return [...tweetsByUser];
-  }
+  getTweets() {}
 }
