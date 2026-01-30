@@ -5,7 +5,7 @@ import { UsersModule } from './users/users.module';
 import { TweetModule } from './tweet/tweet.module';
 import { AuthModule } from './auth/auth.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { User } from './users/user.entity';
+// import { User } from './users/user.entity';
 import { ProfileModule } from './profile/profile.module';
 
 @Module({
@@ -21,7 +21,8 @@ import { ProfileModule } from './profile/profile.module';
         username: 'postgres',
         password: 'duy1234567890',
         database: 'nestjs',
-        entities: [User],
+        // entities: [User],
+        autoLoadEntities: true,
         synchronize: true,
       }),
     }),

@@ -38,5 +38,5 @@ export class CreateUserDto {
 
   @IsString()
   @IsOptional()
-  profileImage: string;
+  profileImage?: string;
 }
