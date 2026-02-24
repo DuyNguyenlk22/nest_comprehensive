@@ -3,12 +3,16 @@ import { Repository } from 'typeorm';
 import { User } from './user.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreateUserDto } from './dtos/create-user.dto';
+import { Profile } from 'src/profile/profile.entity';
 
 @Injectable()
 export class UserService {
   constructor(
     @InjectRepository(User)
     private userRepository: Repository<User>,
+
+    @InjectRepository(Profile)
+    private profileRepository: Repository<Profile>,
   ) {}
 
   getAllUsers() {
@@ -16,17 +20,13 @@ export class UserService {
   }
 
   public async createUser(userDto: CreateUserDto) {
-    const user = await this.userRepository.findOne({
-      where: { email: userDto.email },
-    });
+    //Create a profile and save
+    userDto.profile = userDto.profile ?? {};
 
-    if (user) {
-      return 'User with this email already exists.';
-    }
+    //Create user object
+    const user = this.userRepository.create(userDto);
 
-    let newUser = this.userRepository.create(userDto);
-    newUser = await this.userRepository.save(newUser);
-
-    return newUser;
+    //Save the user object
+    return await this.userRepository.save(user);
   }
 }
