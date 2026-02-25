@@ -16,7 +16,11 @@ export class UserService {
   ) {}
 
   getAllUsers() {
-    return this.userRepository.find();
+    return this.userRepository.find({
+      relations: {
+        profile: true,
+      },
+    });
   }
 
   public async createUser(userDto: CreateUserDto) {
@@ -28,5 +32,17 @@ export class UserService {
 
     //Save the user object
     return await this.userRepository.save(user);
+  }
+
+  public async deteleUser(id: number) {
+    const user = await this.userRepository.findOneBy({ id });
+
+    await this.userRepository.delete(id);
+
+    if (user?.profile) {
+      await this.profileRepository.delete(user.profile.id);
+    }
+
+    return { deleted: true };
   }
 }
