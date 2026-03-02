@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Param,
   ParseIntPipe,
@@ -16,17 +17,22 @@ export class TweetController {
   constructor(private tweetService: TweetService) {}
 
   @Get('{/:userId}')
-  public getTweets(@Param('userId', ParseIntPipe) userId: number) {
+  public GetTweets(@Param('userId', ParseIntPipe) userId: number) {
     return this.tweetService.getTweets(userId);
   }
 
   @Post()
-  public createTweet(@Body() tweet: CreateTweetDto) {
+  public CreateTweet(@Body() tweet: CreateTweetDto) {
     return this.tweetService.createTweet(tweet);
   }
 
   @Patch()
-  public updateTweet(@Body() updateTweetDto: UpdateTweetDto) {
+  public UpdateTweet(@Body() updateTweetDto: UpdateTweetDto) {
     return this.tweetService.updateTweet(updateTweetDto);
+  }
+
+  @Delete(':id')
+  public DeleteTweet(@Param('id', ParseIntPipe) id: number) {
+    return this.tweetService.deleteTweet(id);
   }
 }
