@@ -5,15 +5,18 @@ import { UsersModule } from './users/users.module';
 import { TweetModule } from './tweet/tweet.module';
 import { AuthModule } from './auth/auth.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-// import { User } from './users/user.entity';
 import { ProfileModule } from './profile/profile.module';
 import { HashtagModule } from './hashtag/hashtag.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
     UsersModule,
     TweetModule,
     AuthModule,
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
     TypeOrmModule.forRootAsync({
       useFactory: () => ({
         type: 'postgres',
@@ -22,7 +25,6 @@ import { HashtagModule } from './hashtag/hashtag.module';
         username: 'postgres',
         password: 'duy1234567890',
         database: 'nestjs',
-        // entities: [User],
         autoLoadEntities: true,
         synchronize: true,
       }),
