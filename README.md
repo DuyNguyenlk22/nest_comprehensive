@@ -60,7 +60,7 @@ ENV_MODE=DEVELOPMENT
 
 Make sure your PostgreSQL database (`nestjs_comprehensive_db`) is created before running the app.
 
-### 4. Running the App
+### Running the App
 
 ```bash
 # development mode (auto-restarts on save)
@@ -71,38 +71,4 @@ npm run start
 
 # production mode
 npm run start:prod
-```
-
-## 🧪 Testing
-
-The project includes standard automated testing commands:
-
-```bash
-# unit tests
-npm run test
-
-# e2e (end-to-end) tests
-npm run test:e2e
-
-# test coverage
-npm run test:cov
-```
-
-## 📂 Project Structure
-
-A quick look at the most important files:
-
-```
-nestjs_comprehensive/
-├── src/
-│   ├── auth/          # Authentication flows
-│   ├── hashtag/       # Hashtag categorization
-│   ├── profile/       # Profile management
-│   ├── tweet/         # Social posts logic
-│   ├── users/         # Core user logic
-│   ├── app.module.ts  # The root module linking everything
-│   └── main.ts        # The entry file that kicks off the app
-├── test/              # E2E test files
-├── .env               # Your environment variables
-└── package.json       # Project dependencies and scripts
 ```
