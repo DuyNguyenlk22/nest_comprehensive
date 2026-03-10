@@ -19,7 +19,7 @@ export class UserService {
   ) {}
 
   getAllUsers() {
-    const enviroment = this.configService.get<string>('ENV_MODE');
+    const enviroment = process.env.NODE_ENV;
     console.log('🚀 ~ UserService ~ getAllUsers ~ enviroment:', enviroment);
 
     return this.userRepository.find({
