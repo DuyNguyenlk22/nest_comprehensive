@@ -13,7 +13,7 @@ Follow these steps to run the project locally.
 Clone the repository and install the required dependencies:
 
 ```bash
-git clone <your-repository-url>
+git clone https://github.com/DuyNguyenlk22/nest_comprehensive.git
 cd nestjs_comprehensive
 npm install
 ```
