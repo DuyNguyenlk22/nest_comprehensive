@@ -14,9 +14,14 @@ import { CreateUserDto } from './dtos/create-user.dto';
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @Get('{/:isMarried}')
+  @Get()
   getUsers() {
     return this.userService.getAllUsers();
+  }
+
+  @Get('/:id')
+  getUserById(@Param('id', ParseIntPipe) id: number) {
+    return this.userService.findUserById(id);
   }
 
   @Post()
